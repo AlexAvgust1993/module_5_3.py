@@ -7,7 +7,10 @@ class House:
         return f"Название: {self.name}, кол-во этажей: {self.number_of_floors}"
 
     def __eq__(self, other):  # Сравнили текущие с представленными этажам № 1
-        return self.number_of_floors == other.number_of_floors
+        if isinstance(other, House):
+            return self.number_of_floors == other.number_of_floors
+        elif isinstance(other, int):
+            return self.number_of_floors == other
 
     def __add__(self, other):  # Прибавили к текущим этажам № 2
         self.number_of_floors += other
@@ -65,3 +68,4 @@ print(h1 >= h2)  # __ge__
 print(h1 < h2)  # __lt__
 print(h1 <= h2)  # __le__
 print(h1 != h2)  # __ne__
+
